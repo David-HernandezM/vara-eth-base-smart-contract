@@ -1,0 +1,7 @@
+.codex
+.atl/
+.binpath
+tools
+target
+Cargo.lock
+skills

@@ -1,0 +1,11 @@
+[package]
+name = "contract-app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sails-rs = { workspace = true, features = ["ethexe"]}
+
+[dev-dependencies]
+sails-rs = { workspace = true, features = ["gstd", "std"] }
+tokio.workspace = true

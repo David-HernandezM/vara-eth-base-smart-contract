@@ -1,0 +1,41 @@
+[package]
+name = "contract"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+resolver = "2"
+members = ["client", "app"]
+
+[workspace.dependencies]
+sails-rs = { version = "0.10.3", features = ["ethexe"] }
+sails-idl-gen = "0.10.3"
+sails-client-gen = "0.10.3"
+tokio = { version = "1.41", features = ["rt", "macros"] }
+mockall = "0.13.1"
+
+[dependencies]
+contract-client = { path = "client", optional = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+contract-app = { path = "app" }
+
+[build-dependencies]
+contract-app = { path = "app" }
+sails-rs = { workspace = true, features = ["wasm-builder"] }
+sails-idl-gen = { workspace = true }
+sails-client-gen = { workspace = true }
+
+[dev-dependencies]
+contract = { path = ".", features = ["wasm-binary", "contract-client"] }
+sails-rs = { workspace = true, features = ["gtest", "gclient"] }
+tokio = { version = "1.41", features = ["rt", "macros"] }
+gstd = "1.10.0"
+gclient = "1.10.0"
+gear-core = "1.10.0"
+rand = "0.10.0"
+
+[features]
+wasm-binary = []
+std = []
+contract-client = ["dep:contract-client"]

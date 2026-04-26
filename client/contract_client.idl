@@ -1,0 +1,24 @@
+constructor {
+  Init : ();
+};
+
+service ContractSvc {
+  Decrement : () -> u64;
+  /// #[returns_value]
+  GetValue : (to_return: u128) -> str;
+  Greet : () -> str;
+  Increment : () -> u64;
+  /// #[payable]
+  SendValue : () -> str;
+  query ContractTotalEth : () -> u128;
+  query CounterValue : () -> u64;
+
+  events {
+    Hello: [u8, 20];
+    ValueReceived: u128;
+    ValueSent: u128;
+    Incremented;
+    Decremented;
+  }
+};
+

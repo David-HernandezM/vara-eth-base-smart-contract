@@ -1,0 +1,5 @@
+[toolchain]
+# channel = "nightly-2025-06-06" 
+channel = "1.91"
+components = [ "clippy", "rustfmt", "llvm-tools" ]
+targets = [ "wasm32v1-none" ]

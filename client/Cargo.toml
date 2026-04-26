@@ -1,0 +1,15 @@
+[package]
+name = "contract-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mockall = { workspace = true, optional = true }
+sails-rs = { workspace = true, features = ["ethexe"]}
+
+[build-dependencies]
+contract-app = { path = "../app" }
+sails-rs = { workspace = true, features = ["build", "ethexe"] }
+
+[features]
+mocks = ["sails-rs/mockall", "dep:mockall"]
